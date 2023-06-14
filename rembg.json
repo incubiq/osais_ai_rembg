@@ -1,0 +1,43 @@
+{
+    "engine": "rembg",
+    "name": "Remove Background",
+    "location": "http://0.0.0.0",
+    "port": 5002,
+    "version": "1.0.4",
+    "description": "Image Utility",
+    "github": "https://github.com/danielgatis/rembg",
+    "requiresGPU": false,
+    "isFree": false,
+    "default_cost": 1000,
+    "params": [{
+        "in": "url_upload",
+        "out": "-filename",
+        "isMandatory": true,
+        "type": "string",
+        "default": null,
+        "accept": {"$max": 2048},
+        "ui": {
+            "title": "Image input",
+            "widget": "uiSelectPicture",
+            "column": 1
+        }
+    }, {
+        "in": "output",
+        "out": "-o",
+        "isMandatory": true,
+        "type": "function",
+        "default": "$output_uid.ext"
+    }, {
+        "in": "idir",
+        "out": "-idir",
+        "isMandatory": false,
+        "type": "string",
+        "default": "./_input/"
+    }, {
+        "in": "odir",
+        "out": "-odir",
+        "isMandatory": false,
+        "type": "string",
+        "default": "./_output/"
+    }]
+}

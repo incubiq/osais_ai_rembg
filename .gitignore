@@ -1,0 +1,10 @@
+.vscode/
+*__pycache__*
+_input/*
+_output/*
+
+readme.txt
+
+env_vai
+env_docker_vai
+env_docker_local
