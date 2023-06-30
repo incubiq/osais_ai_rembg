@@ -42,7 +42,12 @@ def fnRun(_args):
     rembg_image=remove(_fInput, session)
     f.close()
 
-    _pathFileOut=os.path.join(args.outdir, args.output)
+    ## include cycle in output name
+    basename = args.output.split(".")
+    fileOut=basename[0]
+    fileExt=basename[1]
+
+    _pathFileOut=os.path.join(args.outdir, fileOut+"_0."+fileExt)
     with open(_pathFileOut, 'wb') as f:
         f.write(rembg_image)
 

@@ -6,6 +6,7 @@ This AI can run as either of those options:
  - a remote docker (remote ip) connected to OSAIS as a VirtualAI
 
 AI general attributes
+ - origin: https://github.com/danielgatis/rembg
  - Runs on port: 5002  (below referenced as <port>)
  - AI internal name: ai_rembg  (below referenced as <engine>)
  - Use CPU? : yes

@@ -3,9 +3,7 @@
 ##
 
 # base stuff
-FROM yeepeekoo/public:ai_base
-
-WORKDIR /src/app
+FROM yeepeekoo/public:ai_base_osais
 
 # install model
 RUN mkdir -p /root/.u2net && curl -o /root/.u2net/u2net.onnx -L https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2net.onnx

@@ -3,9 +3,9 @@
     "name": "Remove Background",
     "location": "http://0.0.0.0",
     "port": 5002,
-    "version": "1.0.4",
+    "version": "1.0.6",
     "description": "Image Utility",
-    "github": "https://github.com/danielgatis/rembg",
+    "github": "https://github.com/incubiq/osais_ai_rembg",
     "requiresGPU": false,
     "isFree": false,
     "default_cost": 1000,
@@ -26,7 +26,7 @@
         "out": "-o",
         "isMandatory": true,
         "type": "function",
-        "default": "$output_uid.ext"
+        "default": "$output_uid.png"
     }, {
         "in": "idir",
         "out": "-idir",
