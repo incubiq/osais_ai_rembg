@@ -6,6 +6,7 @@
 import os
 import sys
 import argparse
+from datetime import datetime
 
 sys.path.insert(0, './ai/rembg')
 sys.path.insert(0, './ai')
@@ -35,6 +36,8 @@ def fnRun(_args):
         print("\r\nCRITICAL ERROR!!!")
         raise err
     
+    beg_date = datetime.utcnow()
+
     _pathFileIn=os.path.join(args.indir, args.init_image)
     f = open(_pathFileIn, "rb")
     _fInput=f.read()
@@ -47,9 +50,18 @@ def fnRun(_args):
     fileOut=basename[0]
     fileExt=basename[1]
 
-    _pathFileOut=os.path.join(args.outdir, fileOut+"_0."+fileExt)
+    _resFile=fileOut+"_0."+fileExt
+    _pathFileOut=os.path.join(args.outdir, _resFile)
     with open(_pathFileOut, 'wb') as f:
         f.write(rembg_image)
 
     sys.stdout.flush()
+
+    ## return output
+    end_date = datetime.utcnow()
+    return {
+        "beg_date": beg_date,
+        "end_date": end_date,
+        "aFile": [_resFile]
+    }
 
