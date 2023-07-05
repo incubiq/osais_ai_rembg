@@ -6,5 +6,5 @@ _output/*
 readme.txt
 
 env_vai
-env_docker_vai
 env_docker_local
+env_docker_local_vai
