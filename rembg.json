@@ -3,7 +3,7 @@
     "name": "Remove Background",
     "location": "http://0.0.0.0",
     "port": 5002,
-    "version": "1.0.7",
+    "version": "1.0.8",
     "description": "Image Utility",
     "github": "https://github.com/incubiq/osais_ai_rembg",
     "requiresGPU": false,
@@ -15,7 +15,10 @@
         "isMandatory": true,
         "type": "string",
         "default": null,
-        "accept": {"$max": 1024},
+        "accept": {
+            "$max": 2048,
+            "$ext": [".png", ".jpg", ".jpeg"]
+        },
         "ui": {
             "title": "Image input",
             "widget": "uiSelectPicture",
