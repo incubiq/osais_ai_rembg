@@ -17,6 +17,17 @@ from rembg.session_factory import new_session
 from rembg.sessions import sessions_names
 session=new_session("u2net")
 
+## where to save the user profile?
+def fnGetUserdataPath(_username):
+    _path=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    DEFAULT_PROFILE_DIR = os.path.join(_path, '_profile')
+    USER_PROFILE_DIR = os.path.join(DEFAULT_PROFILE_DIR, _username)
+    return {
+        "location": USER_PROFILE_DIR,
+        "voice": False,
+        "picture": True
+    }
+
 def getWarmupData(_id):
     try:
         import time
