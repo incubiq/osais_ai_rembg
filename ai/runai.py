@@ -17,6 +17,25 @@ from rembg.session_factory import new_session
 from rembg.sessions import sessions_names
 session=new_session("u2net")
 
+def getWarmupData(_id):
+    try:
+        import time
+        from werkzeug.datastructures import MultiDict
+        ts=int(time.time())
+        sample_args = MultiDict([
+            ('-u', 'test_user'),
+            ('-uid', str(ts)),
+            ('-t', _id),
+            ('-cycle', '0'),
+            ('-o', 'warmup.jpg'),
+            ('-filename', 'warmup.jpg'),
+        ])
+        return sample_args
+    except:
+        print("Could not call warm up!\r\n")
+        return None
+
+
 def fnRun(_args): 
     vq_parser = argparse.ArgumentParser()
 
@@ -62,6 +81,7 @@ def fnRun(_args):
     return {
         "beg_date": beg_date,
         "end_date": end_date,
+        "mCost": 1,            ## cost multiplier of this AI
         "aFile": [_resFile]
     }
 
