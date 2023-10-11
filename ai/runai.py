@@ -55,7 +55,7 @@ def fnRun(_args):
     vq_parser.add_argument("-idir", "--indir", type=str, help="input directory", default="./_input/", dest='indir')
 
     # Add the PING arguments
-    vq_parser.add_argument("-filename","--init_image", type=str, help="Initial image", default="clown.jpg", dest='init_image')
+    vq_parser.add_argument("-filename","--init_image", type=str, help="Initial image", default="warmpup.jpg", dest='init_image')
     vq_parser.add_argument("-o",    "--output", type=str, help="Output filename", default="output.png", dest='output')
 
     try:
