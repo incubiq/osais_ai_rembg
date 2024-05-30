@@ -12,5 +12,14 @@ RUN mkdir -p /root/.u2net && curl -o /root/.u2net/u2net.onnx -L https://github.c
 COPY ./ai/requirements.txt .
 RUN pip install -r requirements.txt
 
+# install AI
+COPY ./ai/rembg ./ai/rembg
+COPY ./ai/rembg.py ./ai/rembg.py
+
+# install AI dependencies
+WORKDIR /src/app/ai
+RUN pip install rembg
+WORKDIR /src/app
+
 # run as a server
 CMD ["uvicorn", "main_fastapi:app", "--host", "0.0.0.0", "--port", "5000"]

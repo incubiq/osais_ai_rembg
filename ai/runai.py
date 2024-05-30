@@ -1,21 +1,30 @@
 
 ##
-##      REMBG AI
+##      AI_REMBG
 ##
 
-import os
-import sys
-import argparse
+## ------------------------------------------------------------------------
+#       Generic (All AIs)
+## ------------------------------------------------------------------------
+
+import os, sys, argparse, shutil
 from datetime import datetime
 
-sys.path.insert(0, './ai/rembg')
-sys.path.insert(0, './ai')
+## for calling back OSAIS from AI
+gNotifyCallback=None
+gNotifyParams=None
 
-## rembg specifics
-from rembg.bg import remove
-from rembg.session_factory import new_session
-from rembg.sessions import sessions_names
-session=new_session("u2net")
+## Notifications from AI
+def setNotifyCallback(cb, _aParams): 
+    global gNotifyParams
+    global gNotifyCallback
+
+    gNotifyParams=_aParams
+    gNotifyCallback=cb
+
+## For a debug breakpoint
+def fnDebug(): 
+    return True
 
 ## where to save the user profile?
 def fnGetUserdataPath(_username):
@@ -28,6 +37,20 @@ def fnGetUserdataPath(_username):
         "picture": True
     }
 
+## ------------------------------------------------------------------------
+#       Specific
+## ------------------------------------------------------------------------
+
+sys.path.insert(0, './ai/rembg')
+sys.path.insert(0, './ai')
+
+## rembg specifics
+from rembg.bg import remove
+from rembg.session_factory import new_session
+from rembg.sessions import sessions_names
+session=new_session("u2net")
+
+## WARMUP Data
 def getWarmupData(_id):
     try:
         import time
@@ -46,7 +69,7 @@ def getWarmupData(_id):
         print("Could not call warm up!\r\n")
         return None
 
-
+## RUN AI
 def fnRun(_args): 
     vq_parser = argparse.ArgumentParser()
 
